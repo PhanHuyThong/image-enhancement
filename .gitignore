@@ -1,0 +1,6 @@
+original_images/
+*.ipynb_checkpoints*
+low-light/readings/
+*output/
+*result/
+*.DS*
