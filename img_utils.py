@@ -3,16 +3,19 @@ from pathlib import Path
 # from torchvision.
 
 
-def get_image_paths(folder):
-    '''folder: Path
-    returns list of paths of all images in the folder
+def get_image_paths(f):
+    '''f: Path
+    returns list of paths of all images in the folder f, or just f if f is a file
     '''
     suffix = ['jpg', 'jpeg', 'png', 'heic']
-    a = []
-    for i in suffix:
-        a += list(folder.glob('*.'+i))
-        a += list(folder.glob('*.'+i.upper()))
-    return a
+    if not f.is_file():
+        a = []
+        for i in suffix:
+            a += list(f.glob('*.'+i))
+            a += list(f.glob('*.'+i.upper()))
+        return a
+    else: #if folder is a single file
+        return [f]
 
 ## load an image:
 # im = Image.open(img_path)
